@@ -1,13 +1,14 @@
 "use client";
 
-import { AiOutlineMenu } from "react-icons/ai";
-import Avatar from "../Avatar";
 import { useState, useCallback } from "react";
-import MenuItem from "./MenuItem";
-
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import useLoginModal from "@/app/hooks/useLoginModal";
+import { AiOutlineMenu } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
+
+import Avatar from "../Avatar";
+import MenuItem from "./MenuItem";
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 import { SafeUser } from "@/app/types";
 
 interface UserMenuProps {
@@ -15,8 +16,11 @@ interface UserMenuProps {
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
-  const registerModal = useRegisterModal();
+  const router = useRouter();
+
   const loginModal = useLoginModal();
+  const registerModal = useRegisterModal();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {

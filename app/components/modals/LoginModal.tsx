@@ -1,21 +1,25 @@
 "use client";
+
 import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 
-import useLoginModal from "@/app/hooks/useLoginModal";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import Input from "../Inputs/Input";
-import { toast } from "react-hot-toast";
 import Button from "../Button";
-import { useRouter } from "next/navigation";
+
+import useLoginModal from "@/app/hooks/useLoginModal";
+import useRegisterModal from "@/app/hooks/useRegisterModal";
 
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
+  const RegisterModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -94,12 +98,12 @@ const LoginModal = () => {
       />
       <div className="mt-4 font-light text-center text-neutral-500">
         <div className="flex flex-row items-center justify-center gap-2">
-          <div>Already have an account?</div>
+          <div>Create an account?</div>
           <div
-            onClick={loginModal.onClose}
+            onClick={() => {}}
             className="cursor-pointer text-neutral-500 hover:underline"
           >
-            Log in
+            Sign up
           </div>
         </div>
       </div>

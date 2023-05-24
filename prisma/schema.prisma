@@ -20,7 +20,6 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   favoriteIds String[] @db.ObjectId
-
   accounts Account[]
   listings Listing[]
   reservations Reservation[]
@@ -69,7 +68,7 @@ model Reservation {
   listingId String @db.ObjectId
   startDate DateTime
   endDate DateTime
-  totalPrcie Int
+  totalPrice Int
   createdAt DateTime @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
