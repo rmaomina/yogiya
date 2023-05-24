@@ -1,7 +1,7 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { AiFillGithub } from "react-icons/ai";
@@ -54,6 +54,11 @@ const LoginModal = () => {
     });
   };
 
+  const onToggle = useCallback(() => {
+    loginModal.onClose();
+    RegisterModal.onClose();
+  }, [loginModal, RegisterModal]);
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading
@@ -100,7 +105,7 @@ const LoginModal = () => {
         <div className="flex flex-row items-center justify-center gap-2">
           <div>Create an account?</div>
           <div
-            onClick={() => {}}
+            onClick={onToggle}
             className="cursor-pointer text-neutral-500 hover:underline"
           >
             Sign up
