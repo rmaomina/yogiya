@@ -9,6 +9,7 @@ import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useRentModal from "@/app/hooks/useRentModal";
 import { SafeUser } from "@/app/types";
 
 interface UserMenuProps {
@@ -20,10 +21,11 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+  const rentModal = useRentModal();
 
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleOpen = useCallback(() => {
+  const onToggle = useCallback(() => {
     setIsOpen(value => !value);
   }, []);
 
@@ -31,7 +33,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     if (!currentUser) {
       return loginModal.onOpen();
     }
-  }, [currentUser, loginModal]);
+
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
 
   return (
     <div className="relative">
@@ -40,10 +44,10 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           onClick={onRent}
           className="hidden px-4 py-3 text-sm font-semibold transition rounded-full cursor-pointer md:block hover:bg-neutral-100"
         >
-          yogiya page
+          My yogiya
         </div>
         <div
-          onClick={toggleOpen}
+          onClick={onToggle}
           className="p-4 md:py-1 md:px-2 border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-sm transition"
         >
           <AiOutlineMenu size={18} />
@@ -70,7 +74,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                   label="My properties"
                 />
                 <MenuItem
-                  onClick={() => {}}
+                  onClick={rentModal.onOpen}
                   label="My yogiya"
                 />
                 <hr />
