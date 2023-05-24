@@ -19,7 +19,7 @@ import useRegisterModal from "@/app/hooks/useRegisterModal";
 const LoginModal = () => {
   const router = useRouter();
   const loginModal = useLoginModal();
-  const RegisterModal = useRegisterModal();
+  const registerModal = useRegisterModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -56,8 +56,8 @@ const LoginModal = () => {
 
   const onToggle = useCallback(() => {
     loginModal.onClose();
-    RegisterModal.onClose();
-  }, [loginModal, RegisterModal]);
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className="flex flex-col gap-4">
