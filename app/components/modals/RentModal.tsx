@@ -1,5 +1,6 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useState, useMemo } from "react";
 
 import Modal from "./Modal";
@@ -7,8 +8,10 @@ import Heading from "../Heading";
 
 import useRentModal from "@/app/hooks/useRentModal";
 import CategoryInput from "../Inputs/CategoryInput";
+import CountrySelect from "../Inputs/CountrySelect";
 import { categories } from "../navbar/Categories";
 import { FieldValues, useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 enum STEPS {
   CATEGORY = 0,
@@ -20,6 +23,7 @@ enum STEPS {
 }
 
 const RentModal = () => {
+  const router = useRouter();
   const rentModal = useRentModal();
 
   const [step, setStep] = useState(STEPS.CATEGORY);
@@ -46,12 +50,21 @@ const RentModal = () => {
   });
 
   const category = watch("category");
+  const location = watch("location");
+
+  const Map = useMemo(
+    () =>
+      dynamic(() => import("../Map"), {
+        ssr: false,
+      }),
+    [location],
+  );
 
   const setCustomValue = (id: string, value: any) => {
     setValue(id, value, {
-      shouldValidate: true,
       shouldDirty: true,
       shouldTouch: true,
+      shouldValidate: true,
     });
   };
 
@@ -78,7 +91,7 @@ const RentModal = () => {
     return "Back";
   }, [step]);
 
-  const bodyContent = (
+  let bodyContent = (
     <div className="flex flex-col gap-8">
       <Heading
         title="Which of these best describes your place?"
@@ -101,11 +114,28 @@ const RentModal = () => {
       </div>
     </div>
   );
+
+  if (step === STEPS.LOCATION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you"
+        />
+        <CountrySelect
+          onChange={value => setCustomValue("location", value)}
+          value={location}
+        />
+        <Map center={location?.latlng} />
+      </div>
+    );
+  }
+
   return (
     <Modal
       isOpen={rentModal.isOpen}
       onClose={rentModal.onClose}
-      onSubmit={rentModal.onClose}
+      onSubmit={onNext}
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
