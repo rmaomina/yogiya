@@ -4,7 +4,7 @@ import useCountries from "@/app/hooks/useCountries";
 import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { useRouter } from "next/navigation";
 import { useCallback, useMemo } from "react";
-import { format } from "date-fns";
+import { differenceInCalendarDays, format } from "date-fns";
 import Image from "next/image";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
@@ -64,6 +64,19 @@ const ListingCard: React.FC<ListingCardProps> = ({
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [reservation]);
 
+  const reservationDayCount = useMemo(() => {
+    if (!reservation) {
+      return null;
+    }
+
+    const dayCount = differenceInCalendarDays(
+      new Date(reservation.endDate),
+      new Date(reservation.startDate),
+    );
+
+    return dayCount;
+  }, [reservation]);
+
   return (
     <div
       onClick={() => router.push(`/listings/${data.id}`)}
@@ -96,7 +109,11 @@ const ListingCard: React.FC<ListingCardProps> = ({
         </div>
         <div className="flex flex-row items-center gap-1">
           <div className="font-semibold">$ {price}</div>
-          {!reservation && <div className="font-light">night</div>}
+          {reservation ? (
+            <div className="font-light">({reservationDayCount} nights)</div>
+          ) : (
+            <div className="font-light">night</div>
+          )}
         </div>
         {onAction && actionLabel && (
           <Button
