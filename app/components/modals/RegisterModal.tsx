@@ -11,7 +11,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import Modal from "./Modal";
 import Heading from "../Heading";
-import Input from "../Inputs/Input";
+import Input from "../inputs/Input";
 import Button from "../Button";
 
 import useLoginModal from "@/app/hooks/useLoginModal";

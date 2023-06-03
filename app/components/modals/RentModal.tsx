@@ -8,12 +8,12 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Modal from "./Modal";
 import Heading from "../Heading";
 import useRentModal from "@/app/hooks/useRentModal";
-import CategoryInput from "../Inputs/CategoryInput";
-import CountrySelect from "../Inputs/CountrySelect";
+import CategoryInput from "../inputs/CategoryInput";
+import CountrySelect from "../inputs/CountrySelect";
 import { categories } from "../navbar/Categories";
-import Counter from "../Inputs/Counter";
-import ImageUpload from "../Inputs/ImageUpload";
-import Input from "../Inputs/Input";
+import Counter from "../inputs/Counter";
+import ImageUpload from "../inputs/ImageUpload";
+import Input from "../inputs/Input";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 
