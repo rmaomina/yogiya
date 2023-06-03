@@ -6,15 +6,14 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { toast } from "react-hot-toast";
 
-import { SafeListing, SafeUser } from "@/app/types";
-import { Reservation } from "@prisma/client";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { categories } from "@/app/components/navbar/Categories";
 import Container from "@/app/components/Container";
 import ListingHead from "@/app/components/listings/ListingHead";
 import ListingInfo from "@/app/components/listings/ListingInfo";
 import useLoginModal from "@/app/hooks/useLoginModal";
 import ListingReservation from "@/app/components/listings/ListingReservation";
-import { Range, RangeKeyDict } from "react-date-range";
+import { Range } from "react-date-range";
 
 const initialDateRange = {
   startDate: new Date(),
@@ -27,7 +26,7 @@ interface ListingClientProps {
     user: SafeUser;
   };
   currentUser?: SafeUser | null;
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
 }
 
 const ListingClient: React.FC<ListingClientProps> = ({
