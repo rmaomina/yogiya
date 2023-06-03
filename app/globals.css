@@ -14,3 +14,22 @@ body,
 .leaflet-top {
   z-index: 0 !important;
 }
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+.rdrCalendarWrapper {
+  width: 100% !important;
+  font-size: 16px !important;
+}
+
+.rdrStartEdge {
+  border-top-left-radius: 1.1em !important;
+  border-bottom-left-radius: 1.1em !important;
+}
+
+.rdrEndEdge {
+  border-top-right-radius: 1.1em !important;
+  border-bottom-right-radius: 1.1em !important;
+}
