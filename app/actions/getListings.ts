@@ -4,7 +4,7 @@ export interface IListingsParams {
   userId?: string;
 }
 
-export default async function getListing(params: IListingsParams) {
+const getListings = async (params: IListingsParams) => {
   try {
     const { userId } = params;
 
@@ -30,4 +30,6 @@ export default async function getListing(params: IListingsParams) {
   } catch (error: any) {
     throw new Error(error);
   }
-}
+};
+
+export default getListings;
