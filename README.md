@@ -1,6 +1,6 @@
 # 🗺️ yogiya [🔗](yogiya.vercel.app)
 
-## Stack
+## Stacks
 
 Nextjs, React, Tailwind, zustand, Prisma, MongoDB, vercel, App Router(Nextjs 13), NextAuth
 
