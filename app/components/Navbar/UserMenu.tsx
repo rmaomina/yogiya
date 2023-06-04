@@ -44,7 +44,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
           onClick={onRent}
           className="hidden px-4 py-3 text-sm font-semibold transition rounded-full cursor-pointer md:block hover:bg-neutral-100"
         >
-          My yogiya
+          Create yogiya
         </div>
         <div
           onClick={onToggle}
@@ -75,7 +75,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 />
                 <MenuItem
                   onClick={rentModal.onOpen}
-                  label="My yogiya"
+                  label="Create yogiya"
                 />
                 <hr />
                 <MenuItem

@@ -268,7 +268,7 @@ const RentModal = () => {
       actionLabel={actionLabel}
       secondaryActionLabel={secondaryActionLabel}
       secondaryAction={step === STEPS.CATEGORY ? undefined : onBack}
-      title="My yogiya"
+      title="Create yogiya"
       body={bodyContent}
     />
   );
