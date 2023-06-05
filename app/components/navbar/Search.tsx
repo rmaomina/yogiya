@@ -2,7 +2,7 @@
 
 import useCountries from "@/app/hooks/useCountries";
 import useSearchModal from "@/app/hooks/useSearchModal";
-import { differenceInCalendarDays, differenceInDays } from "date-fns";
+import { differenceInCalendarDays } from "date-fns";
 import { useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { BiSearch } from "react-icons/bi";
