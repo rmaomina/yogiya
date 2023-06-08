@@ -2,8 +2,6 @@
 
 ## Stacks
 
-Nextjs, React, Tailwind, zustand, Prisma, MongoDB, vercel, App Router(Nextjs 13), NextAuth
+Nextjs, React, Tailwind, zustand, Prisma, MongoDB, vercel, NextAuth
 
-<div class="color: #ccc">
-[🙏 Code with Antonio](https://www.youtube.com/watch?v=c_-b\*isI4vg)
-</div>
+[🙏 Code with Antonio](https://www.youtube.com/watch?v=c_-b*isI4vg)
