@@ -1,4 +1,4 @@
-# 🗺️ yogiya [🔗](https://yogiya.vercel.app/trips)
+# 🗺️ yogiya [🔗](https://yogiya.vercel.app/)
 
 ## Stacks
 
